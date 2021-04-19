@@ -42,7 +42,7 @@ UM_EXPORT_MODULE(ExpoUpdates);
       @"isEnabled": @(YES),
       @"isUsingEmbeddedAssets": @(_updatesService.isUsingEmbeddedAssets),
       @"updateId": launchedUpdate.updateId.UUIDString ?: @"",
-      @"manifest": launchedUpdate.rawManifest ?: @{},
+      @"manifest": launchedUpdate.rawManifest.rawManifestJSON ?: @{},
       @"releaseChannel": _updatesService.config.releaseChannel,
       @"localAssets": _updatesService.assetFilesMap ?: @{},
       @"isEmergencyLaunch": @(_updatesService.isEmergencyLaunch),
@@ -106,7 +106,7 @@ UM_EXPORT_METHOD_AS(checkForUpdateAsync,
     if ([selectionPolicy shouldLoadNewUpdate:update withLaunchedUpdate:launchedUpdate filters:update.manifestFilters]) {
       resolve(@{
         @"isAvailable": @(YES),
-        @"manifest": update.rawManifest
+        @"manifest": update.rawManifest.rawManifestJSON
       });
     } else {
       resolve(@{
@@ -138,7 +138,7 @@ UM_EXPORT_METHOD_AS(fetchUpdateAsync,
     if (update) {
       resolve(@{
         @"isNew": @(YES),
-        @"manifest": update.rawManifest
+        @"manifest": update.rawManifest.rawManifestJSON
       });
     } else {
       resolve(@{
