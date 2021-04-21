@@ -81,7 +81,7 @@ jobs:
               - ios/versioned-react-native/**
               - ios/Exponent/Versioned/**
       - name: 🏗 Build Expo Go for simulator
-        run: expotools client-build --platform ios --flavor ${{ steps.flavor.outputs.versioned == 'true' && 'versioned' || 'unversioned' }}
+        run: expotools client-build --platform ios --flavor ${{ (steps.flavor.outputs.versioned == 'true' || startsWith(github.event.ref, 'refs/heads/sdk-')) && 'versioned' || 'unversioned' }}
         timeout-minutes: 120
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

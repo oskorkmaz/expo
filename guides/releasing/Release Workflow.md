@@ -259,7 +259,7 @@ In the managed workflow, we use our forked `react-native` repository because we 
 
 **How:**
 
-- On iOS, by default, Expo Go builds with only unversioned code. Make sure to switch the scheme to `Expo Go (versioned)` in Xcode before building the app for versioned QA.
+- On iOS, by default, Expo Go builds with only unversioned code (except CI). Make sure to switch the scheme to `Expo Go (versioned)` in Xcode before building the app for versioned QA.
 - Go through another guide about [Quality Assurance](Quality%20Assurance.md).
 - Commit any fixes to `master` and cherry-pick to the `sdk-XX` branch.
 
