@@ -83,7 +83,10 @@ public abstract class BaseExperienceActivity extends MultipleVersionReactNativeA
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    Exponent.getInstance().setCurrentActivity(this);
+
     super.onCreate(savedInstanceState);
+
     mIsInForeground = true;
     mReactRootView = new RNObject("com.facebook.react.ReactRootView");
 
@@ -94,7 +97,6 @@ public abstract class BaseExperienceActivity extends MultipleVersionReactNativeA
   protected void onResume() {
     super.onResume();
     mKernel.setActivityContext(this);
-    Exponent.getInstance().setCurrentActivity(this);
 
     sVisibleActivity = this;
 
